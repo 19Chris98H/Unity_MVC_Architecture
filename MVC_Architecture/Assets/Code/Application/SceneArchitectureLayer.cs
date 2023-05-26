@@ -11,7 +11,7 @@ public class SceneArchitectureLayer<T> : GameElement
 
     void OnDestroy()
     {
-        if (app == null) return;
+        if (App == null) return;
         SetPropertyTo(null);
     }
 
@@ -23,9 +23,9 @@ public class SceneArchitectureLayer<T> : GameElement
             var propertyInfo = layerType.GetProperties().ToList().First(info => info.PropertyType == GetType());
             switch (layerType)
             {
-                case Type t when t == typeof(ApplicationController) : propertyInfo.SetValue(app.Controller, sceneController); break;
-                case Type t when t == typeof(ApplicationView) : propertyInfo.SetValue(app.View, sceneController); break;
-                case Type t when t == typeof(ApplicationModel) : propertyInfo.SetValue(app.Model, sceneController); break;
+                case Type t when t == typeof(ApplicationController) : propertyInfo.SetValue(App.Controller, sceneController); break;
+                case Type t when t == typeof(ApplicationView) : propertyInfo.SetValue(App.View, sceneController); break;
+                case Type t when t == typeof(ApplicationModel) : propertyInfo.SetValue(App.Model, sceneController); break;
             }
         }
         catch (Exception)
