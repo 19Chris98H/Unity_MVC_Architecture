@@ -1,5 +1,6 @@
 # MVC Architecture for Unity
 This package provides a template from that you can build on you project using the MVC pattern.
+You can simply download the single [package file](Architecture.unitypackage) and drop it into your project to import everything you need without cloning the whole repository. 
 
 ## The MVC Pattern
 The MVC (Model-View-Controller) pattern is an important pattern in software development. It allows for clear structuring of the project and thereby supports the development process. It divides the project into model, view, and controller classes, which fulfill the following general functions:
