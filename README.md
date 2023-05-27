@@ -1,5 +1,6 @@
 # MVC Architecture for Unity
 This package provides a template from that you can build on you project using the MVC pattern.
+
 You can simply download the single [package file](Architecture.unitypackage) and drop it into your project to import everything you need without cloning the whole repository. 
 
 ## The MVC Pattern
@@ -13,11 +14,13 @@ There are several ways to implement the MVC pattern in Unity. In my opinion, the
 
 ## How to Use This Architecture
 Every project requires an "Application Scene", which is always active and loaded first. This scene is already provided in the Scenes folder of the package. All other scenes of the application can then be loaded additively. The "Application Scene" thus provides the global area, which is available at all times during runtime. In the figure below you can see that the components of the "Application Scene" form the first two layer of the MVC hierarchy. Every element of this hierarchy will later accessed like:
+
 ```C#
 App.Model.AND_SO_ON
 App.View.AND_SO_ON
 App.Controller.AND_SO_ON
 ```
+
 Additionally globally used elements, such as a camera in the view, or application settings in the model, can be integrated into this scene. Therefore, this scene already contains Game Objects for Model, View, and Controller, which contain the corresponding template classes. If you decide against adding certain functionalities to this scene, you can remove the three game objects. Within this scene, no further action is needed in the future, apart from the functionalities you added.
 
 For each scene of the Application, which provides some form of content, you can duplicate the *SceneTemplate* scene and then rename it. This scene now contains the forementioned three Game Objects. The classes that have been added as components to the three Game Objects can also be duplicated and renamed. These three classes are hereinafter referred to as Scene-MVC classes and differ from the rest of the Model, View, and Controller classes (hereinafter referred to as MVC classes) in the way that Scene-MVC classes inherit from the generic class *SceneArchitectureLayer*. The inheritance ensures that when the scene is loaded, the instances of these classes are referenced in first layer of the MVC hierarchy. All that needs to be done is to create a property according to the added class either in *ApplicationModel, -Controller, or -View*. It should preferably be limited to one class per scene and per MVC field in order to keep the classes of the first MVC hierarchy layer as clean as possible. If you just need less then three Scene-MVC classes you can simply delete the not needed Game Objects within the scene. There is then also no need to maintain the not used Scene-MVC classes und therefore you can delete them if you already created them. Furthermore there is no need to provide properties in the first layer for these classes. At the end you get a hierarchy like the one showed in the figure below.
